@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install net-tools wget -y
+yum install net-tools wget vim -y
 systemctl disable firewalld
 systemctl stop firewalld
 sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux
