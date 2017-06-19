@@ -2,24 +2,10 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "2048"
-  end
-
-  config.vm.define  "mgt01" do |mgt01|
-    config.vm.provider "virtualbox" do |vb|
-      vb.name = "mgt01"
-    end
-    mgt01.vm.box = "centos/7"
-    mgt01.vm.hostname = "mgt01.cloudera"
-    mgt01.vm.network "private_network", ip: "10.0.15.100"
-    mgt01.vm.provision "shell", path: "provision.sh"
-  end
-
   config.vm.define  "dn01" do |dn01|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn01"
+      vb.memory = "2048"
     end
     dn01.vm.box = "centos/7"
     dn01.vm.hostname = "dn01.cloudera"
@@ -30,6 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.define  "dn02" do |dn02|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn02"
+      vb.memory = "2048"
     end
     dn02.vm.box = "centos/7"
     dn02.vm.hostname = "dn02.cloudera"
@@ -40,6 +27,7 @@ Vagrant.configure("2") do |config|
   config.vm.define  "dn03" do |dn03|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn03"
+      vb.memory = "2048"
     end
     dn03.vm.box = "centos/7"
     dn03.vm.hostname = "dn03.cloudera"
@@ -50,11 +38,23 @@ Vagrant.configure("2") do |config|
   config.vm.define  "dn04" do |dn04|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn04"
+      vb.memory = "2048"
     end
     dn04.vm.box = "centos/7"
     dn04.vm.hostname = "dn04.cloudera"
     dn04.vm.network "private_network", ip: "10.0.15.104"
     dn04.vm.provision "shell", path: "provision.sh"
   end
- 
+
+  config.vm.define  "mgt01" do |mgt01|
+    config.vm.provider "virtualbox" do |vb|
+      vb.name = "mgt01"
+      vb.memory = "8192"
+    end
+    mgt01.vm.box = "centos/7"
+    mgt01.vm.hostname = "mgt01.cloudera"
+    mgt01.vm.network "private_network", ip: "10.0.15.100"
+    mgt01.vm.provision "shell", path: "mgt01.sh"
+    mgt01.vm.network "forwarded_port", guest: 7180, host: 7180
+  end
 end
