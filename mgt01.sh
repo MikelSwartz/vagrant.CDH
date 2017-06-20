@@ -15,7 +15,17 @@ echo 10.0.15.104 dn04.cloudera dn04 >> /etc/hosts
 echo  DNS1=8.8.8.8 >> /etc/sysconfig/network-scripts/ifcfg-eth1
 echo  DNS2=8.8.4.4 >> /etc/sysconfig/network-scripts/ifcfg-eth1
 
+sed -i 's/^PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+/bin/systemctl restart  sshd.service
+chmod +w /etc/sudoers
+sed -i 's/^\%wheel.*/##%wheel ALL=(ALL)       ALL/g' /etc/sudoers
+sed -i 's/^# \%wheel.*/%wheel  ALL=(ALL)       NOPASSWD: ALL/g' /etc/sudoers
+chmod -w /etc/sudoers
+
 cd /vagrant/
+
+adduser cloudera -g wheel
+echo -e "$(cat PASSWORD)" |passwd cloudera
 
 wget https://archive.cloudera.com/cm5/installer/5.8.5.3/cloudera-manager-installer.bin
 chmod u+x cloudera-manager-installer.bin
