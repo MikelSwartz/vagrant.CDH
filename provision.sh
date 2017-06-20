@@ -26,5 +26,6 @@ cd /vagrant/
 
 adduser cloudera -g wheel
 echo -e "$(cat PASSWORD)" |passwd cloudera
+echo -e "$(cat PASSWORD)" |passwd 
 
 reboot

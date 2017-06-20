@@ -26,6 +26,7 @@ cd /vagrant/
 
 adduser cloudera -g wheel
 echo -e "$(cat PASSWORD)" |passwd cloudera
+echo -e "$(cat PASSWORD)" |passwd
 
 wget https://archive.cloudera.com/cm5/installer/5.8.5.3/cloudera-manager-installer.bin
 chmod u+x cloudera-manager-installer.bin
