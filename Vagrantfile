@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
     dn01.vm.box = "centos/7"
     dn01.vm.hostname = "dn01.cloudera"
     dn01.vm.network "private_network", ip: "10.0.15.101"
+    dn01.vm.synced_folder ".", "/vagrant"
     dn01.vm.provision "shell", path: "provision.sh"
   end
 
@@ -21,6 +22,7 @@ Vagrant.configure("2") do |config|
     dn02.vm.box = "centos/7"
     dn02.vm.hostname = "dn02.cloudera"
     dn02.vm.network "private_network", ip: "10.0.15.102"
+    dn02.vm.synced_folder ".", "/vagrant"
     dn02.vm.provision "shell", path: "provision.sh"
   end
 
@@ -32,6 +34,7 @@ Vagrant.configure("2") do |config|
     dn03.vm.box = "centos/7"
     dn03.vm.hostname = "dn03.cloudera"
     dn03.vm.network "private_network", ip: "10.0.15.103"
+    dn03.vm.synced_folder ".", "/vagrant"
     dn03.vm.provision "shell", path: "provision.sh"
   end
 
@@ -43,6 +46,7 @@ Vagrant.configure("2") do |config|
     dn04.vm.box = "centos/7"
     dn04.vm.hostname = "dn04.cloudera"
     dn04.vm.network "private_network", ip: "10.0.15.104"
+    dn04.vm.synced_folder ".", "/vagrant"
     dn04.vm.provision "shell", path: "provision.sh"
   end
 
@@ -50,10 +54,12 @@ Vagrant.configure("2") do |config|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "mgt01"
       vb.memory = "8192"
+#      vb.cpus = 2
     end
     mgt01.vm.box = "centos/7"
     mgt01.vm.hostname = "mgt01.cloudera"
     mgt01.vm.network "private_network", ip: "10.0.15.100"
+    mgt01.vm.synced_folder ".", "/vagrant"
     mgt01.vm.provision "shell", path: "mgt01.sh"
     mgt01.vm.network "forwarded_port", guest: 7180, host: 7180
   end
