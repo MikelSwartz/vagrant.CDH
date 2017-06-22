@@ -28,4 +28,5 @@ adduser cloudera -g wheel
 echo -e "$(cat PASSWORD)" |passwd cloudera
 echo -e "$(cat PASSWORD)" |passwd 
 
-reboot
+systemctl disable firewalld
+#reboot
