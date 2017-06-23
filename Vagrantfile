@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
     mgt01.vm.hostname = "mgt01.cloudera"
     mgt01.vm.network "private_network", ip: "10.0.15.100"
     mgt01.vm.synced_folder ".", "/vagrant"
-    mgt01.vm.provision "shell", path: "mgt01.sh"
+    mgt01.vm.provision "shell", path: "provision.sh"
     mgt01.vm.network "forwarded_port", guest: 7180, host: 7180
   end
 end
