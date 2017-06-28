@@ -1,11 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+#Run this bash command below to setup the private network on VBox
+# VBoxManage natnetwork add --netname CDHNatNetwork --network 10.0.15.0/24 --enable --dhcp on
 
 Vagrant.configure("2") do |config|
   config.vm.define  "dn01" do |dn01|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn01"
-      vb.memory = "2048"
+      vb.memory = "1024"
     end
     dn01.vm.box = "centos/7"
     dn01.vm.hostname = "dn01.cloudera"
@@ -17,7 +19,7 @@ Vagrant.configure("2") do |config|
   config.vm.define  "dn02" do |dn02|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn02"
-      vb.memory = "2048"
+      vb.memory = "1024"
     end
     dn02.vm.box = "centos/7"
     dn02.vm.hostname = "dn02.cloudera"
@@ -29,7 +31,7 @@ Vagrant.configure("2") do |config|
   config.vm.define  "dn03" do |dn03|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn03"
-      vb.memory = "2048"
+      vb.memory = "1024"
     end
     dn03.vm.box = "centos/7"
     dn03.vm.hostname = "dn03.cloudera"
@@ -41,7 +43,7 @@ Vagrant.configure("2") do |config|
   config.vm.define  "dn04" do |dn04|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "dn04"
-      vb.memory = "2048"
+      vb.memory = "1024"
     end
     dn04.vm.box = "centos/7"
     dn04.vm.hostname = "dn04.cloudera"
@@ -54,7 +56,7 @@ Vagrant.configure("2") do |config|
     config.vm.provider "virtualbox" do |vb|
       vb.name = "mgt01"
       vb.memory = "8192"
-#      vb.cpus = 2
+      vb.cpus = 3
     end
     mgt01.vm.box = "centos/7"
     mgt01.vm.hostname = "mgt01.cloudera"

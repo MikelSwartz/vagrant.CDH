@@ -6,6 +6,7 @@ VER=5.8.5.3
 yum install net-tools -y
 systemctl disable firewalld
 systemctl stop firewalld
+
 sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux
 sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
 
@@ -49,4 +50,4 @@ echo "vm.swappiness = 10" >> /etc/sysctl.conf
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
-#reboot
+reboot
