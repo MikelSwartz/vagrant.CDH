@@ -8,6 +8,6 @@ Create a text file name 'PASSWORD' with the password you want to use for this pr
 It needs to be written two times with no other characters. 
 EXAMPLE:
 
-*password*
+*password*    
 *password*
 
