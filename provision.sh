@@ -3,7 +3,7 @@
 #Cloudera Version
 VER=5.8.5.3
 
-yum install net-tools -y
+yum install net-tools telnet -y
 systemctl disable firewalld
 systemctl stop firewalld
 
