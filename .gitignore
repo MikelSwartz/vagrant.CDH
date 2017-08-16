@@ -1,3 +1,5 @@
+.gitignore
 data
+PASSWORD
 .vagrant
 cloudera-manager-installer.bin
