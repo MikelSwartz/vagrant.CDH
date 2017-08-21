@@ -58,6 +58,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "8192"
       vb.cpus = 3
     end
+    mgt01.vm.synced_folder ".", "/vagrant", type: "nfs"
     mgt01.vm.box = "centos/7"
     mgt01.vm.hostname = "mgt01.cloudera"
     mgt01.vm.network "private_network", ip: "10.0.15.100"
