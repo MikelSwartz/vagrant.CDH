@@ -65,5 +65,7 @@ Vagrant.configure("2") do |config|
     mgt01.vm.synced_folder ".", "/vagrant"
     mgt01.vm.provision "shell", path: "provision.sh"
     mgt01.vm.network "forwarded_port", guest: 7180, host: 7180
+    mgt01.vm.network "forwarded_port", guest: 8888, host: 7188
+    mgt01.vm.network "forwarded_port", guest: 8889, host: 7189
   end
 end
