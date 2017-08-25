@@ -42,7 +42,6 @@ if [ $(hostname) == "mgt01.cloudera" ] ; then
   fi
 fi
 
-systemctl disable firewalld
 echo 10 > /proc/sys/vm/swappiness
 sysctl vm.swappiness=10
 sed -i '/^vm.swappiness.*/d' /etc/sysctl.conf
@@ -53,4 +52,5 @@ sudo chmod 755 /etc/init.d/disable-transparent-hugepages
 chkconfig --add disable-transparent-hugepages
 
 sed -i -e 's/NM_CONTROLLED=no/NM_CONTROLLED=yes/' /etc/sysconfig/network-scripts/ifcfg-eth1 #Some versions of VBox do not set this correctly and the ifcfg does not start on boot
-reboot
+#reboot
+systemctl restart cloudera-scm-agent.service
